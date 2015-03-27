@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    html, body {
+      height: 100%;
+    }
+    .inner {
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      height: 10000px;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <iframe allowtransparency="true" src="placeholder.html" class="inner"></iframe>
+  <script src="jquery.js"></script>
+  <script type="text/javascript">
+    var urls = [
+      'http://interface-studio.com',
+      'http://press.visitphilly.com',
+      'http://askemap.org',
+      'http://gilkerlin.com',
+      'http://ldi.upenn.edu/',
+      // busted styles on home page
+      // 'http://gtms.org',
+      'http://connectthecircuit.org',
+      'http://www.rap-arcc.org/',
+      'http://kimberton.org',
+      'http://pogil.org',
+      'http://ccaha.org',
+      'http://philly360.visitphilly.com',
+      'http://aapss.org',
+      'http://cgi.unc.edu',
+      'http://civilwarmuseumphila.org',
+      'http://pasbdc.org',
+      'https://autismmatch.org/',
+      'http://www.apostrophenow.com/',
+      'http://chibe.upenn.edu',
+      'http://greatphillyschools.org',
+      // down?
+      // 'http://cs.uarts.edu',
+      // 'http://tps.uarts.edu',
+      'http://worldclassgreaterphila.org',
+      'http://planphilly.com/',
+      'https://autismmatch.org/',
+      'http://thefoodtrust.org',
+      'http://ihousephilly.org',
+      'http://drwc.org/',
+      'http://cuspproject.org/',
+      'http://moore.edu',
+      'http://greenestreetfriends.org/',
+      'http://www.themichaelsorg.com',
+      'http://papayalive.org',
+      'http://efworld.org',
+      'http://grayareaphilly.org',
+      'http://phillyfunguide.com',
+      'http://ccdparks.org',
+      'http://weathervanemusic.org',
+      'http://seventy.org',
+      'http://junto.org',
+      'http://bettertomorrows.org',
+      'http://pik.upenn.edu',
+      'http://charliewasasinner.com',
+      'http://pie-charts.pie-network.org',
+      'http://www.lgarch.com',
+      'http://ortnercenter.org',
+      'http://netgainchallenge.org',
+      'http://ece.greatphillyschools.org/',
+      'http://fandm.edu',
+      'http://goodcompanygroup.org',
+      'http://new-guide.punkave.com/',
+      'http://punkave.com'
+    ];
+
+    $(window).load(function() {
+      var $inner = $('.inner');
+      var i = 0;
+      next();
+
+      function next() {
+        $inner.fadeOut();
+        $inner.attr('src', urls[i]);
+        $inner.on('load', function() {
+          $inner.fadeIn();
+          $('body').scrollTop(0);
+        });
+
+        i++;
+        i %= urls.length;
+
+        setTimeout(pan, 5000);
+
+        function pan() {
+          var n = 0;
+          var interval = setInterval(function() {
+            $('body').scrollTop(n);
+            n++;
+            if (n === 500) {
+              clearInterval(interval);
+              return next();
+            }
+          }, 10);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
