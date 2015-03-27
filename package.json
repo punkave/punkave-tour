@@ -1,0 +1,27 @@
+{
+  "name": "punkave-tour",
+  "version": "0.1.0",
+  "description": "Slideshow of punkave's sites",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^3.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/punkave/punkave-tour"
+  },
+  "keywords": [
+    "tour",
+    "punkave"
+  ],
+  "author": "Thomas Boutell <tom@punkave.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/punkave/punkave-tour/issues"
+  },
+  "homepage": "https://github.com/punkave/punkave-tour"
+}
