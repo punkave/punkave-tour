@@ -10,7 +10,15 @@
       padding: 0;
       border: none;
     }
+    .outer {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
     .inner {
+      position: absolute;
+    }
+    .card {
       display: block;
       width: 100%;
       border: none;
@@ -20,10 +28,13 @@
   </style>
 </head>
 <body>
+  <div class="outer"><div class="inner"></div></div>
   <script src="jquery.js"></script>
   <script type="text/javascript">
     $(function() {
-      var $body = $('body');
+      var $inner = $('.inner');
+      // not really using these, just make sure
+      // the number of URLs matches capture.js
       var urls = [
         'http://interface-studio.com',
         'http://press.visitphilly.com',
@@ -103,16 +114,16 @@
         }
         $prev = $current;
         $current = $next;
-        $next = $('<img class="inner" src="pngs/' + i + '.png" />');
-        $body.append($next);
+        $next = $('<img class="card" src="pngs/' + i + '.png" />');
+        $inner.append($next);
         i++;
         i %= urls.length;
         if ($prev) {
-          $('body').scrollTop($prev.offset().top);
+          $inner.css('top', (- $prev.position().top) + 'px');
         }
         if ($current) {
-          $('body').animate({
-            scrollTop: $current.offset().top + 'px'
+          $inner.animate({
+            'top': (- $current.position().top) + 'px'
           }, {
             duration: 5000,
             complete: function() {
