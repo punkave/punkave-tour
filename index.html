@@ -14,9 +14,12 @@
       position: relative;
       overflow: hidden;
       height: 100%;
+      width: 1400px;
+      margin: auto;
     }
     .inner {
       position: absolute;
+      width: 1400px;
     }
     .card {
       display: block;
@@ -52,7 +55,7 @@
         'http://cgi.unc.edu',
         'http://civilwarmuseumphila.org',
         'http://pasbdc.org',
-        'https://autismmatch.org/',
+        // 'https://autismmatch.org/',
         'http://www.apostrophenow.com/',
         'http://chibe.upenn.edu',
         'http://greatphillyschools.org',
@@ -60,7 +63,6 @@
         'http://tps.uarts.edu',
         'http://worldclassgreaterphila.org',
         'http://planphilly.com/',
-        'https://autismmatch.org/',
         'http://thefoodtrust.org',
         'http://ihousephilly.org',
         'http://drwc.org/',
@@ -74,7 +76,8 @@
         'http://phillyfunguide.com',
         'http://ccdparks.org',
         'http://weathervanemusic.org',
-        'http://seventy.org',
+        // ssl problems
+        // 'http://seventy.org',
         'http://junto.org',
         'http://bettertomorrows.org',
         'http://pikprofessors.upenn.edu',
@@ -125,9 +128,9 @@
           $inner.animate({
             'top': (- $current.position().top) + 'px'
           }, {
-            duration: 5000,
+            duration: 1000,
             complete: function() {
-              setTimeout(next, 5000);
+              setTimeout(next, 1000);
             }
           });
         } else {

@@ -17,7 +17,8 @@ var urls = [
   'http://cgi.unc.edu',
   'http://civilwarmuseumphila.org',
   'http://pasbdc.org',
-  'https://autismmatch.org/',
+  // SSL problem
+  // 'https://autismmatch.org/',
   'http://www.apostrophenow.com/',
   'http://cs.uarts.edu',
   'http://chibe.upenn.edu',
@@ -25,7 +26,6 @@ var urls = [
   'http://tps.uarts.edu',
   'http://worldclassgreaterphila.org',
   'http://planphilly.com/',
-  'https://autismmatch.org/',
   'http://thefoodtrust.org',
   'http://ihousephilly.org',
   'http://drwc.org/',
@@ -39,13 +39,17 @@ var urls = [
   'http://phillyfunguide.com',
   'http://ccdparks.org',
   'http://weathervanemusic.org',
-  'http://seventy.org',
+  // ssl problems
+  // 'http://seventy.org',
   'http://junto.org',
   'http://bettertomorrows.org',
-  'https://pikprofessors.upenn.edu',
-  'http://charliewasasinner.com',
+  // ssl problems
+  // 'https://pikprofessors.upenn.edu',
+  // scrolling problems
+  // 'http://charliewasasinner.com',
   'http://pie-charts.pie-network.org',
-  'http://www.lgarch.com',
+  // scrolling problems
+  // 'http://www.lgarch.com',
   'http://ortnercenter.org',
   'http://netgainchallenge.org',
   'http://ece.greatphillyschools.org/',
