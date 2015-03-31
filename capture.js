@@ -73,9 +73,9 @@ next();
 function next() {
   console.log(i + ': ' + urls[i]);
   page.open(urls[i], function() {
-    // Allow 10 seconds for stuff beyond the
+    // Allow 3 seconds for stuff beyond the
     // regular load event to happen
-    setTimeout(render, 10 * 1000);
+    setTimeout(render, 3 * 1000);
   });
   function render() {
     page.render('pngs/' + i + '.png');

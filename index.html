@@ -17,19 +17,13 @@
       margin: 0 0 300px 0;
       padding: 0;
     }
-    .box {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      transition:top 5s;
-    }
   </style>
 </head>
 <body>
-  <div class="box"></div>
   <script src="jquery.js"></script>
   <script type="text/javascript">
     $(function() {
+      var $body = $('body');
       var urls = [
         'http://interface-studio.com',
         'http://press.visitphilly.com',
@@ -49,9 +43,9 @@
         'http://pasbdc.org',
         'https://autismmatch.org/',
         'http://www.apostrophenow.com/',
-        'http://cs.uarts.edu',
         'http://chibe.upenn.edu',
         'http://greatphillyschools.org',
+        'http://cs.uarts.edu',
         'http://tps.uarts.edu',
         'http://worldclassgreaterphila.org',
         'http://planphilly.com/',
@@ -72,7 +66,7 @@
         'http://seventy.org',
         'http://junto.org',
         'http://bettertomorrows.org',
-        'https://pikprofessors.upenn.edu',
+        'http://pikprofessors.upenn.edu',
         'http://charliewasasinner.com',
         'http://pie-charts.pie-network.org',
         'http://www.lgarch.com',
@@ -80,57 +74,54 @@
         'http://netgainchallenge.org',
         'http://ece.greatphillyschools.org/',
         'http://fandm.edu',
-        'http://www.pahumanities.org/',
-        'http://www.digsau.com/',
         'http://goodcompanygroup.org',
         'http://new-guide.punkave.com/',
         'http://punkave.com'
       ];
 
-      var $images = [];
-      var $box = $('.box');
-      var readyCount = 0;
-      for (var i = 0; (i < urls.length); i++) {
-        $images[i] = $('<img class="inner" src="pngs/' + i + '.png" />');
-        $images[i].on('load', function() {
-          readyCount++;
-          if (readyCount === urls.length) {
-            go();
-          }
-        });
-        $images[i].on('error', function() {
-          $(this).remove();
-          readyCount++;
-          if (readyCount === urls.length) {
-            go();
-          }
-        });
-        $box.append($images[i]);
-      }
+      // load first one
+      // load second one, scroll to second one
+      // load third one, discard first one, jump to
+      // second one, scroll to third one
+      // load fourth one, discard second one, jump
+      // to third one, scroll to fourth one
+      // etc.
 
-      function go() {
-        $(window).on('load', function() {
-          $box.css('top', '0px');
+      var $prev;
+      var $current;
+      var $next;
 
-          var i = 0;
+      var i = 0;
 
-          next();
+      next();
 
-          function next() {
-            setTimeout(scroll, 10000);
-          }
-
-          function scroll() {
-            i++;
-            i %= urls.length;
-            var topOfNext = $images[i].position().top;
-            $box.css('top', (-topOfNext) + 'px');
-            return next();
-          }
-
-          // var until = $(document).height() - $('window').height();
-          // var duration = 10000 * (until / 600);
-        });
+      function next() {
+        if ($prev) {
+          // try to unload it
+          $prev.attr('src', '#');
+          $prev.remove();
+        }
+        $prev = $current;
+        $current = $next;
+        $next = $('<img class="inner" src="pngs/' + i + '.png" />');
+        $body.append($next);
+        i++;
+        i %= urls.length;
+        if ($prev) {
+          $('body').scrollTop($prev.offset().top);
+        }
+        if ($current) {
+          $('body').animate({
+            scrollTop: $current.offset().top + 'px'
+          }, {
+            duration: 5000,
+            complete: function() {
+              setTimeout(next, 5000);
+            }
+          });
+        } else {
+          setTimeout(next, 0);
+        }
       }
     });
   </script>
