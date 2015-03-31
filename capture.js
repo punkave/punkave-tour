@@ -16,9 +16,9 @@ var urls = [
   'http://aapss.org',
   'http://cgi.unc.edu',
   'http://civilwarmuseumphila.org',
+  // rendering problem
   'http://pasbdc.org',
-  // SSL problem
-  // 'https://autismmatch.org/',
+  'https://autismmatch.org/',
   'http://www.apostrophenow.com/',
   'http://cs.uarts.edu',
   'http://chibe.upenn.edu',
@@ -39,17 +39,13 @@ var urls = [
   'http://phillyfunguide.com',
   'http://ccdparks.org',
   'http://weathervanemusic.org',
-  // ssl problems
-  // 'http://seventy.org',
+  'http://seventy.org',
   'http://junto.org',
   'http://bettertomorrows.org',
-  // ssl problems
+  // ssl problem
   // 'https://pikprofessors.upenn.edu',
-  // scrolling problems
-  // 'http://charliewasasinner.com',
   'http://pie-charts.pie-network.org',
-  // scrolling problems
-  // 'http://www.lgarch.com',
+  'http://www.lgarch.com',
   'http://ortnercenter.org',
   'http://netgainchallenge.org',
   'http://ece.greatphillyschools.org/',
@@ -58,7 +54,8 @@ var urls = [
   'http://www.digsau.com/',
   'http://goodcompanygroup.org',
   'http://new-guide.punkave.com/',
-  'http://punkave.com'
+  'http://punkave.com',
+  'http://aprweb.org'
 ];
 
 var page = require('webpage').create();
@@ -69,6 +66,9 @@ page.viewportSize = {
   width: 1400,
   height: 1400 * 9 / 16
 };
+
+// don't wait all day for APIs
+page.settings.resourceTimeout = 3000;
 
 // async for loop
 var i = 0;
