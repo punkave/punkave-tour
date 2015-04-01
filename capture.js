@@ -17,7 +17,7 @@ var urls = [
   'http://cgi.unc.edu',
   'http://civilwarmuseumphila.org',
   // rendering problem
-  'http://pasbdc.org',
+  // 'http://pasbdc.org',
   'https://autismmatch.org/',
   'http://www.apostrophenow.com/',
   'http://cs.uarts.edu',
@@ -53,9 +53,9 @@ var urls = [
   'http://www.pahumanities.org/',
   'http://www.digsau.com/',
   'http://goodcompanygroup.org',
+  'http://aprweb.org',
   'http://new-guide.punkave.com/',
-  'http://punkave.com',
-  'http://aprweb.org'
+  'http://punkave.com'
 ];
 
 var page = require('webpage').create();
@@ -77,9 +77,9 @@ next();
 function next() {
   console.log(i + ': ' + urls[i]);
   page.open(urls[i], function() {
-    // Allow 3 seconds for stuff beyond the
+    // Allow time for stuff beyond the
     // regular load event to happen
-    setTimeout(render, 3 * 1000);
+    setTimeout(render, 10 * 1000);
   });
   function render() {
     page.render('pngs/' + i + '.png');
