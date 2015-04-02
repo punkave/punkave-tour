@@ -1,62 +1,7 @@
 // this is phantomjs, not node!
 
-var urls = [
-  'http://interface-studio.com',
-  'http://press.visitphilly.com',
-  'http://askemap.org',
-  'http://gilkerlin.com',
-  'http://ldi.upenn.edu/',
-  'http://gtms.org',
-  'http://connectthecircuit.org',
-  'http://www.rap-arcc.org/',
-  'http://kimberton.org',
-  'http://pogil.org',
-  'http://ccaha.org',
-  'http://philly360.visitphilly.com',
-  'http://aapss.org',
-  'http://cgi.unc.edu',
-  'http://civilwarmuseumphila.org',
-  // rendering problem
-  // 'http://pasbdc.org',
-  'https://autismmatch.org/',
-  'http://www.apostrophenow.com/',
-  'http://cs.uarts.edu',
-  'http://chibe.upenn.edu',
-  'http://greatphillyschools.org',
-  'http://tps.uarts.edu',
-  'http://worldclassgreaterphila.org',
-  'http://planphilly.com/',
-  'http://thefoodtrust.org',
-  'http://ihousephilly.org',
-  'http://drwc.org/',
-  'http://cuspproject.org/',
-  'http://moore.edu',
-  'http://greenestreetfriends.org/',
-  'http://www.themichaelsorg.com',
-  'http://papayalive.org',
-  'http://efworld.org',
-  'http://grayareaphilly.org',
-  'http://phillyfunguide.com',
-  'http://ccdparks.org',
-  'http://weathervanemusic.org',
-  'http://seventy.org',
-  'http://junto.org',
-  'http://bettertomorrows.org',
-  // ssl problem
-  // 'https://pikprofessors.upenn.edu',
-  'http://pie-charts.pie-network.org',
-  'http://www.lgarch.com',
-  'http://ortnercenter.org',
-  'http://netgainchallenge.org',
-  'http://ece.greatphillyschools.org/',
-  'http://fandm.edu',
-  'http://www.pahumanities.org/',
-  'http://www.digsau.com/',
-  'http://goodcompanygroup.org',
-  'http://aprweb.org',
-  'http://new-guide.punkave.com/',
-  'http://punkave.com'
-];
+phantom.injectJs('./urls.js');
+urls = Object.keys(urls);
 
 var page = require('webpage').create();
 page.viewportSize = {

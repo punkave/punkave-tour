@@ -17,6 +17,18 @@
       width: 1400px;
       margin: auto;
     }
+    .year {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      font-family: Helvetica;
+      opacity: 0.8;
+      background-color: #def;
+      color: black;
+      font-size: 36px;
+      padding: 10px 15px 10px 15px;
+      border-radius: 8px;
+    }
     .inner {
       position: absolute;
       width: 1400px;
@@ -31,70 +43,13 @@
   </style>
 </head>
 <body>
-  <div class="outer"><div class="inner"></div></div>
+  <div class="outer"><div class="inner"></div><div class="year"></div></div>
   <script src="jquery.js"></script>
+  <script src="lodash.js"></script>
+  <script src="urls.js"></script>
   <script type="text/javascript">
     $(function() {
       var $inner = $('.inner');
-      // not really using these, just make sure
-      // the number of URLs matches capture.js
-      var urls = [
-        'http://interface-studio.com',
-        'http://press.visitphilly.com',
-        'http://askemap.org',
-        'http://gilkerlin.com',
-        'http://ldi.upenn.edu/',
-        'http://gtms.org',
-        'http://connectthecircuit.org',
-        'http://www.rap-arcc.org/',
-        'http://kimberton.org',
-        'http://pogil.org',
-        'http://ccaha.org',
-        'http://philly360.visitphilly.com',
-        'http://aapss.org',
-        'http://cgi.unc.edu',
-        'http://civilwarmuseumphila.org',
-        // rendering problem
-        // 'http://pasbdc.org',
-        'https://autismmatch.org/',
-        'http://www.apostrophenow.com/',
-        'http://cs.uarts.edu',
-        'http://chibe.upenn.edu',
-        'http://greatphillyschools.org',
-        'http://tps.uarts.edu',
-        'http://worldclassgreaterphila.org',
-        'http://planphilly.com/',
-        'http://thefoodtrust.org',
-        'http://ihousephilly.org',
-        'http://drwc.org/',
-        'http://cuspproject.org/',
-        'http://moore.edu',
-        'http://greenestreetfriends.org/',
-        'http://www.themichaelsorg.com',
-        'http://papayalive.org',
-        'http://efworld.org',
-        'http://grayareaphilly.org',
-        'http://phillyfunguide.com',
-        'http://ccdparks.org',
-        'http://weathervanemusic.org',
-        'http://seventy.org',
-        'http://junto.org',
-        'http://bettertomorrows.org',
-        // ssl problem
-        // 'https://pikprofessors.upenn.edu',
-        'http://pie-charts.pie-network.org',
-        'http://www.lgarch.com',
-        'http://ortnercenter.org',
-        'http://netgainchallenge.org',
-        'http://ece.greatphillyschools.org/',
-        'http://fandm.edu',
-        'http://www.pahumanities.org/',
-        'http://www.digsau.com/',
-        'http://goodcompanygroup.org',
-        'http://aprweb.org',
-        'http://new-guide.punkave.com/',
-        'http://punkave.com'
-      ];
 
       // load first one
       // load second one, scroll to second one
@@ -108,6 +63,7 @@
       var $current;
       var $next;
 
+      var years = _.values(urls);
       var i = 0;
 
       next();
@@ -123,7 +79,7 @@
         $next = $('<img class="card" src="pngs/' + i + '.png" />');
         $inner.append($next);
         i++;
-        i %= urls.length;
+        i %= years.length;
         if ($prev) {
           $inner.css('top', (- $prev.position().top) + 'px');
         }
@@ -133,6 +89,7 @@
           }, {
             duration: 5000,
             complete: function() {
+              $('.year').text(years[i]);
               setTimeout(next, 5000);
             }
           });
