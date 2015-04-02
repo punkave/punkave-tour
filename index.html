@@ -63,7 +63,11 @@
       var $current;
       var $next;
 
-      var years = _.values(urls);
+      var urls = window.urls;
+      var years = [];
+      for (key in urls) {
+        years.push(urls[key]);
+      }
       var i = 0;
 
       next();

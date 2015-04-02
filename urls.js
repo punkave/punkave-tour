@@ -61,4 +61,6 @@ var urls = {
 
 if (typeof(module) !== 'undefined') {
   module.exports = urls;
+} else {
+  window.urls = urls;
 }
