@@ -44,7 +44,7 @@
   </style>
 </head>
 <body>
-  <div class="outer"><div class="inner"></div><div class="year"></div></div>
+  <div class="outer"><div class="inner"></div></div>
   <script src="jquery.js"></script>
   <script src="lodash.js"></script>
   <script src="urls.js"></script>
@@ -65,10 +65,10 @@
       var $next;
 
       var urls = window.urls;
-      var years = [];
-      for (key in urls) {
-        years.push(urls[key]);
-      }
+      // var years = [];
+      // for (key in urls) {
+      //   years.push(urls[key]);
+      // }
       var i = 0;
 
       next();
@@ -84,7 +84,7 @@
         $next = $('<img class="card" src="pngs/' + i + '.png" />');
         $inner.append($next);
         i++;
-        i %= years.length;
+        i %= urls.length;
         if ($prev) {
           $inner.css('top', (- $prev.position().top) + 'px');
         }
@@ -92,9 +92,9 @@
           $inner.animate({
             'top': (- $current.position().top) + 'px'
           }, {
-            duration: 5000,
+            duration: 10000,
             complete: function() {
-              $('.year').text(years[i]);
+              // $('.year').text(years[i]);
               setTimeout(next, 5000);
             }
           });

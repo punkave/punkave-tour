@@ -1,7 +1,15 @@
+
+var casper = require('casper').create({
+    verbose: true,
+    logLevel: "debug"
+});
+
+console.log('starting');
+
 // this is phantomjs, not node!
 
 phantom.injectJs('./urls.js');
-urls = Object.keys(urls);
+// urls = Object.keys(urls);
 
 var page = require('webpage').create();
 page.viewportSize = {
